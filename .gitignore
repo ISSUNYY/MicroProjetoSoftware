@@ -1,0 +1,65 @@
+# Ignorar compilados
+*.exe
+*.o
+*.obj
+*.dll
+*.so
+*.dylib
+*.out
+*.app
+*.a
+*.lib
+
+# Diretórios de build
+build/
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+
+# Arquivos do Visual Studio
+.vs/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.suo
+
+# Arquivos do VS Code
+.vscode/
+
+# Arquivos do Qt Creator
+*.pro.user
+*.pro.user.*
+
+# Arquivos temporários LaTeX
+*.aux
+*.log
+*.toc
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+*.pdfsync
+
+# Ignorar PDFs gerados nos diretórios (opcional, mas como vamos commitar a versão final, deixamos comentado)
+# *.pdf
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos de backup e temporários
+*~
+*.bak
+*.swp
+*.tmp
+*.temp

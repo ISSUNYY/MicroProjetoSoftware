@@ -1,0 +1,412 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+
+\geometry{
+  top=2.5cm,
+  bottom=2.5cm,
+  left=3cm,
+  right=2.5cm
+}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue
+}
+
+\begin{document}
+
+%--------------------------------------------------------------
+% CAPA
+%--------------------------------------------------------------
+\begin{titlepage}
+  \centering
+  {\large UNIVERSIDADE ESTADUAL DO NORTE FLUMINENSE}\\[0.3cm]
+  {\large LABORATÓRIO DE ENGENHARIA E EXPLORAÇÃO DE PETRÓLEO}\\[0.3cm]
+  {\large CENTRO DE CIÊNCIA E TECNOLOGIA}\\[1.5cm]
+  {\Large \textbf{MICRO PROJETO DE ENGENHARIA}}\\[0.5cm]
+  {\Large \textbf{DESENVOLVIMENTO DO SOFTWARE}}\\[0.5cm]
+  {\Large \textbf{XXXX}}\\[1.5cm]
+  {\normalsize DISCIPLINA: Introdução ao Projeto de Engenharia}\\[0.3cm]
+  {\normalsize Setor de Modelagem Matemática Computacional}\\[1.5cm]
+  \begin{flushleft}
+    \textbf{Equipe Clientes:}\\
+    nomes\\[0.8cm]
+    \textbf{Equipe Desenvolvedores:}\\
+    nomes\\[0.8cm]
+    \textbf{Revisor Técnico:}\\
+    Prof. André Duarte Bueno
+  \end{flushleft}
+  \vfill
+  {\normalsize MACAÉ -- RJ}\\[0.2cm]
+  {\normalsize Janeiro -- 2026}
+\end{titlepage}
+
+%--------------------------------------------------------------
+% SEÇÃO: DIDÁTICA
+%--------------------------------------------------------------
+\section*{Didática}
+
+O objetivo didático é implementar a Aprendizagem Baseada em Projetos (PBL) e simulação de papéis (\textit{Role-Playing}).
+
+Simular uma situação real do relacionamento entre clientes e empresas de engenharia.
+
+A dinâmica emula o ciclo inicial de engenharia de requisitos e a comunicação (frequentemente ruidosa) entre:
+\begin{itemize}
+  \item ``O Cliente'' que entende da física/fenômeno do problema, normalmente um geólogo, geofísico, engenheiro.
+  \item ``O Engenheiro de Software/Projetista'', que fará a modelagem do sistema de engenharia.
+\end{itemize}
+
+\subsection*{Limites\footnote{O limite tem fins didáticos e é estabelecido apenas para que o problema seja resolvido em curto espaço de tempo. Problemas reais são bem mais complexos e detalhados.} Estritos Recomendados (O Escopo)}
+
+Para garantir que as duplas consigam entregar os diagramas no prazo, os alunos clientes devem preencher um ``Template de Especificação'' contendo, no máximo, os seguintes itens:
+
+\begin{itemize}
+  \item \textbf{Tema/Problema de Engenharia:}
+  \begin{itemize}
+    \item Restrito a um cálculo ou simulação simplificada (ex: coleta e análise de amostras catalogadas; processamento de dados de um ensaio de campo; cálculo básico de propriedades de rochas; análise de dados de perfis; análise geofísica; processamento de dados de fluidos; análise de dados de reservatório; simulação simples de sistemas simples aplicados a engenharia de reservatório, poço, elevação e escoamento).
+  \end{itemize}
+
+  \item \textbf{Atores (Usuários):}
+  \begin{itemize}
+    \item Máximo de 2
+    \item (ex: Usuário, Operador de Laboratório, Sistema de Aquisição de Dados, Sistema Gerador de Gráficos).
+  \end{itemize}
+
+  \item \textbf{Requisitos Funcionais (RF):}
+  \begin{itemize}
+    \item 3 a 4 requisitos.
+    \item Ex: RF1 -- O sistema deve ler um arquivo com as leituras de pressão e vazão. RF2 -- O sistema deve calcular a permeabilidade. RF3 -- O sistema deve gerar um relatório binarizado de falhas.
+  \end{itemize}
+
+  \item \textbf{Requisitos Não Funcionais (RNF):}
+  \begin{itemize}
+    \item 1 a 2 requisitos, focados em engenharia de software.
+    \item Ex: RNF1 -- A modelagem deve prever o encapsulamento estrito visando codificação em C++ moderno. RNF2 -- O tempo de processamento das matrizes não deve exceder 2 segundos.
+  \end{itemize}
+
+  \item \textbf{Casos de Uso Principais:}
+  \begin{itemize}
+    \item Exigir apenas 1 ou 2 cenários (O ``Caminho Feliz'' do cálculo e 1 fluxo de exceção, como ``Dados de entrada inconsistentes'').
+  \end{itemize}
+\end{itemize}
+
+%--------------------------------------------------------------
+% SEÇÃO: METODOLOGIA
+%--------------------------------------------------------------
+\section*{Metodologia}
+
+A Figura~\ref{fig:metodologia} apresenta a metodologia a ser utilizada no desenvolvimento do sistema (modelos).
+
+\begin{itemize}
+  \item Para facilitar disponibilizamos um repositório modelo deste micro-projeto de engenharia. O mesmo pode ser clonado:
+  \begin{itemize}
+    \item \url{https://github.com/ldsc/LDSC-ProjetoEngenharia-3-MicroProjetoSoftware-TituloProjeto}
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[h!]
+  \centering
+  % Substituir pelo caminho da imagem exportada do PDF, se disponível:
+  % \includegraphics[width=\textwidth]{metodologia.png}
+  \fbox{\parbox{0.9\textwidth}{\centering [Diagrama da Metodologia -- inserir imagem]}}
+  \caption{Metodologia utilizada no desenvolvimento do sistema}
+  \label{fig:metodologia}
+\end{figure}
+
+%--------------------------------------------------------------
+% CONTRATO
+%--------------------------------------------------------------
+\newpage
+\begin{center}
+  {\Large \textbf{Contrato de Prestação de Serviços de\\[0.3cm] Engenharia de Software}}
+\end{center}
+
+\vspace{0.5cm}
+
+Pelo presente instrumento particular, de um lado, doravante denominado simplesmente CONTRATANTE (Grupo Cliente), e, de outro lado, doravante denominado simplesmente CONTRATADA (Grupo Executor), celebram o presente Contrato de Prestação de Serviços de Engenharia de Software, mediante as cláusulas e condições a seguir estipuladas.
+
+\begin{itemize}[leftmargin=*]
+
+  %--- CLÁUSULA 1 ---
+  \item \textbf{CLÁUSULA 1 -- DO OBJETO}
+  \begin{itemize}
+    \item O presente contrato tem por objeto a especificação, modelagem UML e futuro desenvolvimento de um software aplicativo voltado à resolução de um problema específico de Engenharia de Petróleo, em conformidade estrita com as metodologias apresentadas na Figura~\ref{fig:metodologia} e nas referências \cite{Rumbaugh1994, Bueno2003, Blaha2006}.
+  \end{itemize}
+
+  %--- CLÁUSULA 2 ---
+  \item \textbf{CLÁUSULA 2 -- ESCOPO DO PROBLEMA DE ENGENHARIA}
+  \begin{itemize}
+    \item \textbf{Objetivo:}
+    \begin{itemize}
+      \item Ex: O PercolaEdu 2D é um software educativo interativo desenvolvido para auxiliar estudantes do ensino médio e superior (Física, Matemática, Ciência da Computação, Engenharia) a compreenderem os conceitos de probabilidade, transição de fase, conectividade e teoria dos grafos através do modelo de percolação de sítios em malhas bidimensionais (2D).
+    \end{itemize}
+
+    \item \textbf{Público-Alvo:}
+    \begin{itemize}
+      \item Alunos do ensino médio avançado.
+      \item Estudantes de graduação em Ciências Exatas.
+      \item Professores que necessitam de ferramentas visuais para demonstrar fenômenos críticos e estatísticos.
+    \end{itemize}
+
+    \item \textbf{Especificação:}
+    \begin{itemize}
+      \item Ex: O software educativo PercolaEdu 2D, com licença GPL -- livre, deve ser multiplataforma, usar linguagem de alto desempenho (C++) e ter uma interface em modo terminal -- CLI. O simulador deve permitir a entrada de dados da rede de percolação, suas dimensões $M_x$, $N_y$, e $p$ a probabilidade de ativação de cada sítio. Podendo, opcionalmente, informar o modelo de distribuição a ser utilizado para determinar a probabilidade $p$ (distribuição uniforme, normal, Bernoulli, T-Student) e o modelo de vizinhança pode ser de faces diretas ou faces e cantos. Deve ser possível gerar redes únicas para estudo de um caso específico (um único valor de $p$) ou situações em que o valor da probabilidade $p$ cresce até que ocorra a percolação. Os resultados devem incluir a informação se ocorre ou não a percolação, ou seja, se existe um caminho contínuo de sítios ocupados conectando o topo à base (ou a esquerda à direita) da malha. As imagens resultantes devem ser salvas e opcionalmente visualizadas. Os algoritmos de agrupamento devem incluir a busca profunda e Hoshen-Kopelman.
+    \end{itemize}
+
+    \item \textbf{Cenários:}
+    \begin{itemize}
+      \item A fim de delimitar a fronteira de interação entre os atores e o sistema, ficam estabelecidos os cenários principais de uso abaixo descritos:
+
+      \item \textbf{Cenário 1:}
+      \begin{itemize}
+        \item Ex: O software permitirá que o usuário crie uma malha (\textit{grid}) de tamanho $M_x$, $N_y$. Cada ``sítio'' (célula) da malha será ocupado com uma probabilidade $p$ ou vazio com probabilidade $1-p$. O sistema deve identificar visualmente os ``clusters'' (agrupamentos de sítios vizinhos ocupados) e determinar se houve a percolação, ou seja, se existe um caminho contínuo de sítios ocupados conectando o topo à base (ou a esquerda à direita) da malha.
+      \end{itemize}
+
+      \item \textbf{Cenário 2:}
+      \begin{itemize}
+        \item Ex: O sistema não percolou e é necessário aumentar a probabilidade $p$. Ou seja, é iterativo. Mostra o passo a passo.
+      \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Requisitos:}
+
+    \medskip
+    \textbf{RF -- Requisito Funcional}
+
+    \begin{itemize}
+      \item \textbf{RF01}
+      \begin{itemize}
+        \item \textit{Nome:} Ex: Configuração da Malha
+        \item \textit{Descrição:} O usuário deve poder definir o tamanho da malha quadrada inserindo um valor $N$ (ex: de 10 a 500).
+        \item \textit{Prioridade:} Alta
+      \end{itemize}
+
+      \item \textbf{RF02}
+      \begin{itemize}
+        \item \textit{Nome:} Ex: Definição da Probabilidade ($p$)
+        \item \textit{Descrição:} O usuário deve poder ajustar a probabilidade de ocupação dos sítios usando um controle deslizante (\textit{slider}) ou caixa de texto, com valores entre 0,000 e 1,000.
+        \item \textit{Prioridade:} Alta
+      \end{itemize}
+
+      \item \textbf{RF03}
+      \begin{itemize}
+        \item \textit{Nome:} Ex: Geração Aleatória
+        \item \textit{Descrição:} O sistema deve gerar a rede preenchendo os sítios aleatoriamente com base na probabilidade $p$ definida no RF02.
+        \item \textit{Prioridade:} Alta
+      \end{itemize}
+
+      \item \textbf{RF04}
+      \begin{itemize}
+        \item \textit{Nome:} Ex: Identificação de Clusters
+        \item \textit{Descrição:} O algoritmo (ex: Union-Find ou Busca em Profundidade -- DFS) deve agrupar sítios adjacentes ortogonalmente. Cada cluster distinto deve receber uma cor diferente na interface gráfica.
+        \item \textit{Prioridade:} Alta
+      \end{itemize}
+
+      \item \textbf{RF05}
+      \begin{itemize}
+        \item \textit{Nome:} Ex: Detecção de Percolação
+        \item \textit{Descrição:} O sistema deve verificar automaticamente se o maior cluster conecta as bordas opostas (topo-base ou esquerda-direita) e destacar esse ``cluster percolante'' com uma cor especial (ex: vermelho brilhante).
+        \item \textit{Prioridade:} Alta
+      \end{itemize}
+    \end{itemize}
+
+    \medskip
+    \textbf{RNF -- Requisito Não Funcional}
+
+    \begin{itemize}
+      \item \textbf{RNF01 -- Plataforma:}
+      \begin{itemize}
+        \item O software deve ser uma aplicação modo terminal multiplataforma.
+      \end{itemize}
+
+      \item \textbf{RNF02 -- Tecnologias Sugeridas:}
+      \begin{itemize}
+        \item Ex: Gerar as imagens em formato portável entre plataformas.
+      \end{itemize}
+
+      \item \textbf{RNF03 -- Desempenho:}
+      \begin{itemize}
+        \item Ex: A geração e a verificação de percolação de uma malha de $500 \times 500$ devem ocorrer em menos de 1 segundo.
+      \end{itemize}
+
+      \item \textbf{RNF04 -- Usabilidade:}
+      \begin{itemize}
+        \item Ex: A interface deve seguir princípios de design limpo (UI/UX), utilizando textos claros, disponibilizando manuais simplificados.
+      \end{itemize}
+    \end{itemize}
+
+    \medskip
+    \textbf{RN -- Regras de Negócio}
+
+    \begin{itemize}
+      \item \textbf{RN01 -- Vizinhança:}
+      \begin{itemize}
+        \item Ex: Para a formação de um cluster, a conexão entre sítios deve considerar apenas a vizinhança de von Neumann (vizinhos diretos: cima, baixo, esquerda, direita). Diagonais não formam conexões contínuas.
+      \end{itemize}
+
+      \item \textbf{RN02 -- Limites de Entrada:}
+      \begin{itemize}
+        \item Ex: O sistema não deve aceitar valores de $M_x$, $N_y$ menores que 2 ou maiores que um limite seguro estabelecido pelo hardware do cliente (ex: 10000).
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+
+  %--- CLÁUSULA 3 ---
+  \item \textbf{CLÁUSULA 3 -- PRAZOS E CRONOGRAMA (SPRINT)}
+
+  As partes acordam o seguinte cronograma de entregas técnicas, sujeito à validação da CONTRATANTE:
+
+  \begin{itemize}
+    \item \textbf{Dia 1: Concepção Preliminar e Proposta (Em Sala e Em Casa)}
+    \begin{itemize}
+      \item \textit{Cliente:}
+      \begin{itemize}
+        \item Elabora e entrega o documento ``ESCOPO DO PROBLEMA DE ENGENHARIA''\footnote{Problema vinculado ao curso de engenharia}, detalhando Objetivo, Público-Alvo, Especificação, Cenários, Requisitos.
+      \end{itemize}
+      \item \textit{Executor (Pré-venda):}
+      \begin{itemize}
+        \item Monta a Proposta Técnica contendo a experiência da equipe, uma elaboração preliminar do problema (o que entenderam), primeira versão do Diagrama de Casos de Uso (Concepção), esboço do Diagrama de Classes (Domínio) e primeiro rascunho do Diagrama de Sequência. Orçamento e Cronograma Preliminar.
+        \item Entrega: Via e-mail ou repositório temporário para avaliação do cliente.
+      \end{itemize}
+      \item \textit{Cliente (Em casa):}
+      \begin{itemize}
+        \item Revisão da proposta enviada pelo executor e preparação de dúvidas.
+        \item Verificar se houve um claro entendimento do problema a ser resolvido.
+      \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Dia 2: Elaboração, Contratação e Análise OO (Reunião Formal e Em Casa)}
+    \begin{itemize}
+      \item \textit{Reunião Formal:}
+      \begin{itemize}
+        \item Executor apresenta competências da equipe (histórico de projetos desenvolvidos -- marketing); soluções arquiteturais desenvolvidas (modelos UML), orçamento e cronograma preliminar.
+        \item Cliente analisa a proposta, verifica e aprofunda os requisitos técnicos (cálculos, física, química, engenharia) e valida a viabilidade técnica.
+        \item Negociação e Assinatura deste Contrato\footnote{Simulem de fato; para assinar usem o gov.br. Este contrato não tem valor legal, é um exemplo de sala de aula.}.
+      \end{itemize}
+      \item \textit{Executor (Em casa):}
+      \begin{itemize}
+        \item Configuração oficial do Repositório Git/GitHub (aplicação de versionamento inicial). Clonar o repositório modelo, adicionar membros (clientes e equipe de desenvolvimento).
+        \item Execução da fase de Elaboração: Estudo do problema. Montagem do Diagrama de Pacotes / Assuntos.
+        \item Consolidação da Análise OO: Montagem dos Diagramas de Casos de Uso Geral e Específicos, Diagrama de Assuntos e Pacotes, Diagrama de Classes, Diagramas de Sequência (cenários principais), Diagrama de Comunicação e Diagrama de Máquina de Estado.
+        \item Documentação para apresentação formal.
+        \item Entrega: Registro das atividades (checklist, commit) e envio dos dados via repositório do projeto.
+      \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Dia 3: Projeto do Sistema e Revisão (Reunião Formal e Em Casa)}
+    \begin{itemize}
+      \item \textit{Reunião Formal:}
+      \begin{itemize}
+        \item Executor apresenta o modelo de Análise OO consolidado.
+        \item Cliente comenta, critica e solicita correções formais.
+      \end{itemize}
+      \item \textit{Executor (Em casa):}
+      \begin{itemize}
+        \item Definições de Projeto do Sistema: Definição formal de Arquitetura, Bibliotecas (Polinômios/Estatística) e encapsulamento em C++\footnote{O cliente exige C++ porque quer alto desempenho e economia de energia (é um ambientalista).}.
+        \item Projeto OO: Criação do Diagrama de Componentes e Diagrama de Implantação (\textit{hardware}/\textit{cluster}).
+        \item Revisão e refatoração de todos os diagramas UML com base na arquitetura definida.
+      \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Dia 4: Entrega da Modelagem Abrangente e Montagem do Backlog -- Lista de Características (Reunião Formal)}
+    \begin{itemize}
+      \item \textit{Reunião Formal:}
+      \begin{itemize}
+        \item Executor apresenta a documentação final do Ciclo de Concepção e Análise. Inclui documento formal com descrição de todas as etapas desenvolvidas. O Executor extrai dos modelos UML aprovados e entrega a Lista de Características (\textit{Backlog} do Produto), fatiando o escopo em entregas $c_1, c_2, \ldots, c_n$, habilitando o início imediato do Ciclo de Planejamento e Construção Iterativa.
+        \item Cliente: comenta, critica, realiza o aceite técnico formal da documentação entregue e decide sobre a continuidade da mesma empresa/equipe para os ciclos de planejamento e construção\footnote{Se o resultado é satisfatório, contrate para a próxima etapa; se for mediano ou ruim, seja gentil, mas não dê continuidade -- procure outra equipe. Nada de tapinha nas costas; se ficou insatisfeito, procure outra equipe. Haja com profissionalismo, afinal de contas você tem um chefe.}.
+        \item Marco Final (\textit{Deliverable}): Documento final com todos os diagramas e o Backlog -- Lista de Características. Tudo atualizado e armazenado no repositório do projeto.
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+
+  %--- CLÁUSULA 4 ---
+  \item \textbf{CLÁUSULA 4 -- CUSTOS E CONDIÇÕES DE PAGAMENTO}
+  \begin{itemize}
+    \item A remuneração pelo projeto baseia-se no esforço de engenharia empregado na especificação, modelagem, testes lógicos e documentação, eventualmente alguma codificação.
+    \item Valor da Hora de Engenharia de Software: R\$ 350,00.
+    \item Custo Total Estimado para o MVP (\textit{Minimum Viable Product}): [Definir valor baseado no esforço de modelagem -- sugerido 40h de engenharia].
+    \item Os recursos computacionais físicos para compilação e teste final são de inteira responsabilidade da CONTRATADA.
+  \end{itemize}
+
+  %--- CLÁUSULA 5 ---
+  \item \textbf{CLÁUSULA 5 -- REQUISITOS TECNOLÓGICOS E EFICIÊNCIA ENERGÉTICA}
+  \begin{itemize}
+    \item Fica estabelecido que a implementação final da arquitetura modelada deverá ser conduzida na linguagem C++ (padrões modernos C++26 ou mais recente). Esta exigência contratual é inegociável e visa garantir não apenas a máxima performance de execução (cálculos massivos de engenharia), mas também a eficiência energética e ecológica, mitigando o desperdício de processamento, consumo de energia e recursos naturais frequentemente associados a linguagens interpretadas e antiecológicas.
+  \end{itemize}
+
+  %--- CLÁUSULA 6 ---
+  \item \textbf{CLÁUSULA 6 -- SIGILO E PROPRIEDADE INTELECTUAL}
+  \begin{itemize}
+    \item A CONTRATADA compromete-se a manter absoluto sigilo sobre os dados de campo, dados laboratoriais e amostras de laboratório fornecidos pela CONTRATANTE que tenham a marcação SIGILOSA.
+    \item A modelagem UML (diagramas e arquivos LyX) e o código-fonte desenvolvido em C++ serão disponibilizados sob a licença GPL no site \url{http://www.github.com/ldsc} em repositório específico a ser criado.
+  \end{itemize}
+
+  %--- CLÁUSULA 7 ---
+  \item \textbf{CLÁUSULA 7 -- FORO}
+  \begin{itemize}
+    \item Fica eleito o foro da sala de aula, Juiz Prof. André D. Bueno, para dirimir quaisquer controvérsias oriundas da execução deste contrato de engenharia.
+  \end{itemize}
+
+\end{itemize}
+
+\vspace{1cm}
+Macaé -- RJ, \underline{\hspace{1cm}} de \underline{\hspace{3cm}} de 202\underline{\hspace{0.5cm}}.
+
+\vspace{2cm}
+\noindent
+\begin{tabular}{p{0.45\textwidth}p{0.45\textwidth}}
+\hline
+\multicolumn{2}{l}{\textbf{CONTRATANTE (Engenheiro Cliente)}}\\[0.2cm]
+\multicolumn{2}{l}{Grupo:}\\[1cm]
+Engenheiro \underline{\hspace{3cm}} & Assinatura: \underline{\hspace{3cm}} \\[1cm]
+Engenheiro \underline{\hspace{3cm}} & Assinatura: \underline{\hspace{3cm}} \\
+\end{tabular}
+
+\vspace{1.5cm}
+\noindent
+\begin{tabular}{p{0.45\textwidth}p{0.45\textwidth}}
+\hline
+\multicolumn{2}{l}{\textbf{CONTRATADA (Engenheiro Executor)}}\\[0.2cm]
+\multicolumn{2}{l}{Grupo:}\\[1cm]
+Engenheiro \underline{\hspace{3cm}} & Assinatura: \underline{\hspace{3cm}} \\[1cm]
+Engenheiro \underline{\hspace{3cm}} & Assinatura: \underline{\hspace{3cm}} \\
+\end{tabular}
+
+\vspace{1.5cm}
+\noindent\rule{0.6\textwidth}{0.4pt}\\
+Testemunha / Gestor de Projeto (Professor André Bueno)
+
+%--------------------------------------------------------------
+% REFERÊNCIAS
+%--------------------------------------------------------------
+\newpage
+\begin{thebibliography}{9}
+
+\bibitem{Blaha2006}
+BLAHA, M.; RUMBAUGH, J.
+\textit{Modelagem e Projetos Baseados em Objetos com UML~2}.
+Rio de Janeiro: Campus, 2006.
+
+\bibitem{Bueno2003}
+BUENO, A. D.
+\textit{Programação Orientada a Objeto com C++ -- Aprenda a Programar em Ambiente Multiplataforma com Software Livre}.
+São Paulo: Novatec, 1.~ed., 2003.
+
+\bibitem{Rumbaugh1994}
+RUMBAUGH, J.; BLAHA, M.; PREMERLANI, W.; EDDY, F.; LORENSEN, W.
+\textit{Modelagem e Projetos Baseados em Objetos}.
+Rio de Janeiro: Campus, 1994.
+
+\end{thebibliography}
+
+\end{document}
