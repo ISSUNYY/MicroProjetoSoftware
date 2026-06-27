@@ -6,7 +6,7 @@ Repositório do projeto da disciplina de Introdução ao Projeto de Engenharia (
 **Equipe:**
 - Davi Dias
 - Wellington
-- João
+- João Coelho
 
 ## O Problema (Tema G2)
 Nosso grupo ficou responsável pela Modelagem do Carbono Orgânico Total (TOC) para identificar janelas de geração térmica (óleo/gás). O desafio é processar dados de calha que normalmente vêm com bastante ruído. 
