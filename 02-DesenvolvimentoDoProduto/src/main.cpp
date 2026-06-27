@@ -2,71 +2,109 @@
 #include <vector>
 #include <string>
 
-// Simula a classe que faz a leitura dos dados ruidosos da calha
-class CLeitorDados {
+// LoggerPerformance: Registra logs conforme diagrama
+class LoggerPerformance {
 public:
-    std::vector<double> lerDados(const std::string& arquivo) {
-        std::cout << "Lendo arquivo de dados: " << arquivo << "...\n";
-        // Simulando dados ruidosos
-        return {1.2, 1.9, 1.1, 2.8, 1.5, 3.4, 2.1, 4.0, 3.2, 4.8};
+    void registrarEvento(const std::string& msg) {
+        std::cout << "[LOG] " << msg << "\n";
+    }
+    void salvarLog() {
+        std::cout << "[LOG] Arquivo de log salvo.\n";
     }
 };
 
-// Aplica a média móvel pra tirar o ruído
-class CMediaMovel {
+// ParserCSV: Carrega e valida os dados de entrada
+class ParserCSV {
 public:
-    std::vector<double> aplicarFiltro(const std::vector<double>& dados, int janela = 3) {
-        std::cout << "Aplicando Media Movel com janela " << janela << "...\n";
+    bool validarArquivo() {
+        std::cout << "Validando estrutura do arquivo CSV...\n";
+        return true;
+    }
+    std::vector<double> lerDados() {
+        if(validarArquivo()) {
+            std::cout << "Carregando dados da calha do CSV...\n";
+            // Simulando dados ruidosos
+            return {1.2, 1.9, 1.1, 2.8, 1.5, 3.4, 2.1, 4.0, 3.2, 4.8};
+        }
+        return {};
+    }
+};
+
+// FiltroSuavizacao: Aplica a média móvel pra tirar o ruído
+class FiltroSuavizacao {
+private:
+    int janelaMedia;
+public:
+    FiltroSuavizacao(int janela = 3) : janelaMedia(janela) {}
+
+    std::vector<double> aplicarMediaMovel(const std::vector<double>& dados) {
+        std::cout << "Aplicando Filtro de Media Movel (Janela: " << janelaMedia << ")...\n";
         std::vector<double> dadosSuavizados;
-        // Lógica simplificada de media movel para o esqueleto
+        // Mock da logica de media movel
         for (size_t i = 0; i < dados.size(); ++i) {
-            dadosSuavizados.push_back(dados[i] * 0.9); // mock
+            dadosSuavizados.push_back(dados[i] * 0.9);
         }
         return dadosSuavizados;
     }
 };
 
-// Faz a interpolação polinomial (3 grau)
-class CInterpolador {
-public:
-    std::vector<double> calcularPolinomio(const std::vector<double>& dadosSuavizados) {
-        std::cout << "Calculando interpolacao polinomial de 3 grau...\n";
-        // mock do cálculo
-        return dadosSuavizados;
-    }
-};
-
-// Analisa onde estão as janelas de geração (óleo/gás) com base no gradiente
-class CTocAnalyzer {
-public:
-    void identificarJanelas(const std::vector<double>& dadosInterpolados) {
-        std::cout << "Identificando janelas de geracao termica de TOC...\n";
-        std::cout << "-> Janela de oleo encontrada entre as profundidades X e Y.\n";
-        std::cout << "-> Janela de gas encontrada na profundidade Z.\n";
-    }
-};
-
-// Classe principal que orquestra tudo
-class CAplicacao {
+// CalculadorPolinomial: Faz a interpolação polinomial (3 grau)
+class CalculadorPolinomial {
 private:
-    CLeitorDados leitor;
-    CMediaMovel filtro;
-    CInterpolador interpolador;
-    CTocAnalyzer analisador;
+    double a, b, c, d; // coeficientes do polinômio de 3º grau
+public:
+    double calcular(double x) {
+        // mock do cálculo de um ponto y = ax^3 + bx^2 + cx + d
+        return x; 
+    }
+};
+
+// MotorTOC: Classe orquestradora principal (Conforme Diagrama de Classes)
+class MotorTOC {
+private:
+    std::vector<double> dadosBrutos;
+    std::vector<double> dadosFiltrados;
+    std::vector<double> resultadosMaturacao;
+    
+    ParserCSV parser;
+    FiltroSuavizacao filtro;
+    CalculadorPolinomial calculador;
+    LoggerPerformance logger;
 
 public:
-    void executar() {
-        std::cout << "=== Inciando Analise de TOC ===\n\n";
-        auto dadosRuidosos = leitor.lerDados("dados_calha_poco.csv");
-        auto dadosSuavizados = filtro.aplicarFiltro(dadosRuidosos);
-        auto dadosInterpolados = interpolador.calcularPolinomio(dadosSuavizados);
-        analisador.identificarJanelas(dadosInterpolados);
-        std::cout << "\n=== Analise Finalizada ===\n";
+    void carregarCSV(const std::string& caminho) {
+        logger.registrarEvento("Iniciando leitura do arquivo: " + caminho);
+        dadosBrutos = parser.lerDados();
+    }
+
+    void aplicarFiltro() {
+        logger.registrarEvento("Iniciando suavizacao dos dados");
+        dadosFiltrados = filtro.aplicarMediaMovel(dadosBrutos);
+    }
+
+    void calcularMaturacao() {
+        logger.registrarEvento("Calculando polinomio e janelas de geracao (TOC)");
+        for(double val : dadosFiltrados) {
+            resultadosMaturacao.push_back(calculador.calcular(val));
+        }
+        std::cout << "-> Janelas de geracao identificadas com sucesso.\n";
+    }
+
+    void exportarJSON() {
+        logger.registrarEvento("Exportando relatorio JSON final");
+        std::cout << "Relatorio exportado para output.json\n";
     }
 };
 
 int main() {
-    CAplicacao app;
-    app.executar();
+    std::cout << "=== Software de Modelagem Geoquimica TOC ===\n\n";
+    
+    MotorTOC motor;
+    motor.carregarCSV("dados_calha.csv");
+    motor.aplicarFiltro();
+    motor.calcularMaturacao();
+    motor.exportarJSON();
+    
+    std::cout << "\n=== Execucao Finalizada ===\n";
     return 0;
 }
